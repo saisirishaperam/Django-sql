@@ -74,16 +74,18 @@ WSGI_APPLICATION = 'sqldep.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = { 
-        "default": { 
-            "ENGINE": "django.db.backends.mysql", 
-            "NAME": os.environ.get("MYSQLDATABASE"), 
-            "USER": os.environ.get("MYSQLUSER"), 
-            "PASSWORD": os.environ.get("MYSQLPASSWORD"), 
-            "HOST": os.environ.get("MYSQLHOST"), 
-            "PORT": os.environ.get("MYSQLPORT", "3306"), 
+if os.environ.get("RENDER"):
+
+    DATABASES = { 
+            "default": { 
+                "ENGINE": "django.db.backends.mysql", 
+                "NAME": os.environ.get("MYSQLDATABASE"), 
+                "USER": os.environ.get("MYSQLUSER"), 
+                "PASSWORD": os.environ.get("MYSQLPASSWORD"), 
+                "HOST": os.environ.get("MYSQLHOST"), 
+                "PORT": os.environ.get("MYSQLPORT", "3306"), 
+            } 
         } 
-    } 
 
 
 # Password validation
