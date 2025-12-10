@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="2">
+        <tr>
+            <th>std_name</th>
+            <th>std_pin</th>
+        </tr>
+        {% for x in data %}
+        <tr>
+            <td>{{x.std_name}}</td>
+            <td>{{x.std_pin}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'new_stdform' %}">Add Student</a>
+</body>
+</html>
