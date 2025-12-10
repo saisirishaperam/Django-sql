@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-qsa*ry+$8z!adtt*&=gviitl3z^shf=6k#8k7ofi-7pxg*g_6$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -73,12 +74,16 @@ WSGI_APPLICATION = 'sqldep.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = { 
+        "default": { 
+            "ENGINE": "django.db.backends.mysql", 
+            "NAME": os.environ.get("MYSQLDATABASE"), 
+            "USER": os.environ.get("MYSQLUSER"), 
+            "PASSWORD": os.environ.get("MYSQLPASSWORD"), 
+            "HOST": os.environ.get("MYSQLHOST"), 
+            "PORT": os.environ.get("MYSQLPORT", "3306"), 
+        } 
+    } 
 
 
 # Password validation
